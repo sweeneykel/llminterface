@@ -1,0 +1,7 @@
+python
+sqlite
+pytest
+flake8
+coverage
+pandas
+fastapi
