@@ -1,0 +1,7 @@
+﻿name,ID,email,age,start_date,active
+A B,5645645,test1@example.com,2,2/5/2000,0
+B C,2347345,test2@example.com,6,1/9/2025,1
+C D,8467567,test3@example.com,9,8/4/2016,0
+D E,8955561,test4@example.com,88,3/8/1999,1
+E F,8290008,test5@example.com,39,2/5/1899,1
+F G,3247859,test6@example.com,65,10/31/1950,0
