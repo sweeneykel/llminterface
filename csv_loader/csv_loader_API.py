@@ -1,13 +1,20 @@
-# structure guidance from ChatGPT
-# https://chatgpt.com/s/t_69c52dff34ac81918290c060b6daba5a
+# ChatGPT Source: Project Structure
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
 from csv_loader_logic import add_new_table
 
 app = FastAPI()
 
-# called by CLI
-@app.post("/table/{table_name}")
-async def POST_TABLE(table):
-    result = add_new_table(table)
-    return result
+class TableInput(BaseModel):
+    table_path: str
+
+# ChatGPT Source: code review #1: https://chatgpt.com/g/g-p-69c84b135ed48191b95908e323c125fd-ec530-llm-interface-project/project?tab=sources
+@app.post("/table")
+# TODO: blocking call inside async route
+def add_table(request: TableInput):
+    try:
+        result = add_new_table(request.table_path)
+        return result
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
