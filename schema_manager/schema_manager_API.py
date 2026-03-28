@@ -3,8 +3,7 @@ from schema_manager_logic import append_or_create, find_schema_context
 
 app = FastAPI()
 
-#TODO: How does this become exposed only to the modules that can have access?
-
+# called by CSV Ingestor, Query Service
 @app.get("/table/{table_name}")
 async def GET_ACTION(table):
     result = append_or_create(table)

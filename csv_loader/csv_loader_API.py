@@ -6,7 +6,7 @@ from csv_loader_logic import add_new_table
 
 app = FastAPI()
 
-# POST
+# called by CLI
 @app.post("/table/{table_name}")
 async def POST_TABLE(table):
     result = add_new_table(table)

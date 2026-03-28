@@ -1,10 +1,10 @@
 from fastapi import FastAPI
-from query_service_logic import get_query
+from llm_interface_logic import translate_nsl_ql
 
 app = FastAPI()
 
-# called by CLI
+# called by Query Service
 @app.get("/table/{table_name}")
 async def GET(query):
-    result = get_query(query)
+    result = translate_nsl_ql(query)
     return result
