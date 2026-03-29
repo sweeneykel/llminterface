@@ -1,20 +1,28 @@
 from fastapi import FastAPI
-from sqlite_db_logic import add_new_table, append_to_table, get_query
+from pydantic import BaseModel
+from sqlite_db_logic import create_new_table, append_to_table, get_query
+
+class TableClass(BaseModel):
+    table_name: str
+
+
 
 app = FastAPI()
 
-# called by Schema Manager, Query Service
-@app.post("/table/{table_name}")
-async def POST_TABLE(query):
-    result = add_new_table(query)
+# Creates a new table when there is no existing matching schema
+@app.post("/table")
+async def create_table(user_submit: TableClass):
+    result = create_new_table(user_submit)
     return result
 
-@app.put("/table/{table_name}")
-async def APPEND_TABLE(query):
+# Appends uploaded data to an existing table when there is a matching schema
+@app.put("/db/{table_name}")
+async def append_table(query):
     result = append_to_table(query)
     return result
 
-@app.get("/table/{table_name}")
+# Finds appropriate table and retrieves requested information
+@app.get("/db/{table_name}")
 async def GET_QUERY(query):
     result = get_query(query)
     return result

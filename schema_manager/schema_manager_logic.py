@@ -4,8 +4,8 @@
 # provide schema info to other components like Query Service, CSV Loader, LLM
 
 
-def append_or_create(table):
-
+def append_or_create(df):
+    df.keys()
     return 0
 
 def find_schema_context(table):
