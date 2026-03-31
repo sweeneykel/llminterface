@@ -15,4 +15,7 @@ print("result", res.fetchone())
 
 
 def create_new_table(user_submit):
+
     return 0
+
+# append to existing table. Insert lines. (confirm that schemas are exact match!!)

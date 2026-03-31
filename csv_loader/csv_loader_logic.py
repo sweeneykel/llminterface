@@ -12,16 +12,16 @@ def add_new_table(table_path):
     # Step 1: use pandas.read_csv() to load data into df
     df = convert_csv_df(table_path)
 
-    # Step 2: call schema manager. schema manager will decide whether to append to create a new table
-    # TODO: change from method to API once logic is ready
-    append_or_create(df)
+    # Step 2: call schema manager. SM will make a new schema for this uploaded data. Will compare to directory of schemas.
+    # If match, then delete new schema, return command to append.
+    # If no match, then keep new schema, return command to add.
+    decision = append_or_create(df)
 
-    # based off of results from schema manager, either create new DB or append DB
-    # no match. create DB
+    # based off of decision from schema manager, either create new DB or append DB
+    # no match. create DB by call sqlite_db
+
+    # match. append DB to existing by call sqlite_db
 
 
-    # match. append DB to existing.
-
-
-    # return results to callee if success or failure
+    # return results to callee if success(new table, appended table) or failure
     return "This is a placeholder"
