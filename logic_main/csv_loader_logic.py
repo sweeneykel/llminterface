@@ -1,5 +1,14 @@
 import pandas as pd
-from schema_manager.schema_manager_logic import append_or_create
+from logic_main.schema_manager_logic import append_or_create
+
+# Step 1: Convert csv file into a df
+
+# Step 2: Call schema manager to create schema object
+
+# Step 3: Call schema manager to determine: add to existing table or create new table
+
+# Step 4:
+
 
 def convert_csv_df(path):
     try:

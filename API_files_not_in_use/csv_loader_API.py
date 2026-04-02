@@ -2,7 +2,7 @@
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from csv_loader.csv_loader_logic import add_new_table
+from logic_main.csv_loader_logic import add_new_table
 
 app = FastAPI()
 

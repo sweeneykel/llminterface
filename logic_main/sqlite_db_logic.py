@@ -4,7 +4,7 @@ import sqlite3
 
 
 # con represents the connection to the on-disk database
-con = sqlite3.connect("tutorial.db")
+con = sqlite3.connect("../sqlite_db/tutorial.db")
 # in order to execute SQL statements and fetch results, use a database cursor
 cur = con.cursor()
 # create a db table with columns
