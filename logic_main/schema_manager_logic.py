@@ -1,24 +1,22 @@
-# discover existing tables in the db
-# represent table schemas as structured objects
-# compare schemas to determine compatibility (append vs create)
-# provide schema info to other components like Query Service, CSV Loader, LLM
 
-# schema class
-# list of tuples [(column_name,column_type),( , )]
-# can compare regardless of order set(list_a) == set(list_c)
-# if match, then delete schema class. Return command to append only.
-# if no match, keep schema class. Return command to add new.
+def create_table_record(df):
+    # TODO: after code review from chatgpt (below) suggested that I normalize the datatypes depending on control of input. Later.
+    # LLM: code review on df.dtypes.to_dict() https://chatgpt.com/g/g-p-69c84b135ed48191b95908e323c125fd-ec530-llm-interface-project/c/69cfc71c-2f1c-8331-a5e4-1000b37ff97a
+    col_label_dtype = df.dtypes.to_dict()
+
+    # Checks against db of existing objects from tables that were already added to db
 
 
-# determine if append or create a new df
-def append_or_create(df):
+    # If exact match, delete newly created record and instruct csv_loader_logic.py to add to an existing table
 
-    df.columns()
-    return 0
 
-def create_schema_record(df):
+    # Else, store newly created record for future comparison and help with queries and instruct csv_loader_logic to create a new table in the db
 
-    return 0
 
-def find_schema_context(table):
-    return 0
+    return 'create'
+
+
+
+
+
+

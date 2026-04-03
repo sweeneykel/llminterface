@@ -1,36 +1,27 @@
 import pandas as pd
-from logic_main.schema_manager_logic import append_or_create
+from schema_manager_logic import create_table_record
+from sqlite_db_logic import create_new_table
 
-# Step 1: Convert csv file into a df
-
-# Step 2: Call schema manager to create schema object
-
-# Step 3: Call schema manager to determine: add to existing table or create new table
-
-# Step 4:
-
-
-def convert_csv_df(path):
+def add_new_table(table_path):
+    # Step 1: Convert csv file into a df
     try:
-        return pd.read_csv(path)
+        df = pd.read_csv(table_path)
         # TODO: these should be specific types of exceptions
+        print('success')
     except Exception:
         raise
 
-def add_new_table(table_path):
-    # Step 1: use pandas.read_csv() to load data into df
-    df = convert_csv_df(table_path)
+    # Step 2: call schema manager. SM will make a new schema record for this uploaded data.
+    # Will compare to directory of schemas and return command to add to existing table or create new table
+    append_or_create = create_table_record(df)
 
-    # Step 2: call schema manager. SM will make a new schema for this uploaded data. Will compare to directory of schemas.
-    # If match, then delete new schema, return command to append.
-    # If no match, then keep new schema, return command to add.
-    decision = append_or_create(df)
+    if append_or_create == 'create':
+        # Create brand-new table in db
+        create_new_table(df)
 
-    # based off of decision from schema manager, either create new DB or append DB
-    # no match. create DB by call sqlite_db
-
-    # match. append DB to existing by call sqlite_db
-
+    else:
+        # Append data to existing table in db
+        print(0)
 
     # return results to callee if success(new table, appended table) or failure
-    return "This is a placeholder"
+    return 0
