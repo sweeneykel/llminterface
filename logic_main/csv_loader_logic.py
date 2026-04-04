@@ -1,6 +1,6 @@
 import pandas as pd
 from schema_manager_logic import create_schema_record
-from sqlite_db_logic import create_new_table
+from db_connection_manager_logic import add_table_to_db
 
 def upload_data(table_path):
     # Step 1: Convert csv file into a df
@@ -13,15 +13,9 @@ def upload_data(table_path):
 
     # Step 2: call schema manager. SM will make a new schema record for this uploaded data.
     # Will compare to directory of schemas and return command to add to existing table or create new table
-    append_or_create = create_schema_record(df)
+    create_table_str = create_schema_record(df)
 
-    if append_or_create == 'create':
-        # Create brand-new table in db
-        create_new_table(df)
+    placeholder_path = 'sample_db.db'
+    add_table_to_db(create_table_str, placeholder_path)
 
-    else:
-        # Append data to existing table in db
-        print(0)
 
-    # return results to callee if success(new table, appended table) or failure
-    return 0
