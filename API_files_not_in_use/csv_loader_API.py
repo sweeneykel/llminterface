@@ -2,7 +2,7 @@
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from logic_main.csv_loader_logic import add_new_table
+from logic_main.csv_loader_logic import upload_data
 
 app = FastAPI()
 
@@ -14,7 +14,7 @@ class TableInput(BaseModel):
 # TODO: blocking call inside async route
 def add_table(request: TableInput):
     try:
-        result = add_new_table(request.table_path)
+        result = upload_data(request.table_path)
         return result
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
