@@ -1,6 +1,9 @@
 
-def create_table_record(df):
-    # TODO: after code review from chatgpt (below) suggested that I normalize the datatypes depending on control of input. Later.
+# Schema Manager Part 1
+def create_schema_record(df):
+    # Creates a Schema record for all CSVs uploaded.
+
+
     # LLM: code review on df.dtypes.to_dict() https://chatgpt.com/g/g-p-69c84b135ed48191b95908e323c125fd-ec530-llm-interface-project/c/69cfc71c-2f1c-8331-a5e4-1000b37ff97a
     col_label_dtype = df.dtypes.to_dict()
 

@@ -1,5 +1,5 @@
 import argparse
-from csv_loader_logic import add_new_table
+from csv_loader_logic import upload_data
 
 # LLM Usage: Used chatgpt to clarify argparse concepts and consider different options for user input.
 
@@ -26,4 +26,4 @@ if args.query:
 if args.addcsv:
     # Begin addcsv routine. Call query_service_logic
     # args.addcsv is str
-    add_new_table(args.addcsv)
+    upload_data(args.addcsv)

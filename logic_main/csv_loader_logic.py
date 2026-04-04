@@ -1,8 +1,8 @@
 import pandas as pd
-from schema_manager_logic import create_table_record
+from schema_manager_logic import create_schema_record
 from sqlite_db_logic import create_new_table
 
-def add_new_table(table_path):
+def upload_data(table_path):
     # Step 1: Convert csv file into a df
     try:
         df = pd.read_csv(table_path)
@@ -13,7 +13,7 @@ def add_new_table(table_path):
 
     # Step 2: call schema manager. SM will make a new schema record for this uploaded data.
     # Will compare to directory of schemas and return command to add to existing table or create new table
-    append_or_create = create_table_record(df)
+    append_or_create = create_schema_record(df)
 
     if append_or_create == 'create':
         # Create brand-new table in db
