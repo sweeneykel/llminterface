@@ -1,5 +1,6 @@
 import argparse
 from csv_loader_logic import upload_data
+from query_service_logic import get_query
 
 # LLM Usage: Used chatgpt to clarify argparse concepts and consider different options for user input.
 
@@ -21,7 +22,7 @@ args = parser.parse_args()
 if args.query:
     # Begin query routine. Call csv_loader_logic
     # args.query is list
-    print("triggered this module", args.query)
+    get_query(args.query)
 
 if args.addcsv:
     # Begin addcsv routine. Call query_service_logic

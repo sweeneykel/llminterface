@@ -1,6 +1,6 @@
 import pandas as pd
 from schema_manager_logic import create_schema_record
-from db_connection_manager_logic import add_table_to_db
+from db_modifier import add_table_to_db
 
 def upload_data(table_path):
     # Step 1: Convert csv file into a df
