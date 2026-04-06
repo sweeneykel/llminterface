@@ -15,7 +15,4 @@ def get_query(user_query_natural_syntax):
     # call SQL/DB Validator: SQL/DB Validator will conduct verification on LLM Interface's translation
     if validate_LLM_output(llm_sql_syntax):
         # call SQLite DB
-        query_only_db(llm_sql_syntax, placeholder_path)
-
-
-    return 0
+        print("query_service_logic.py, get_query()", query_only_db(llm_sql_syntax, placeholder_path))

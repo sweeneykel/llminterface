@@ -13,15 +13,14 @@ def validate_LLM_output(llm_sql_syntax):
     print("This is the SQL syntax the LLM provided and that is being analyzed: ", llm_sql_syntax)
     # VALIDATION
     # only allow SELECT queries or alternatively allow read only sql connection
-    #if not llm_sql_syntax.startswith("SELECT"):
+    if not llm_sql_syntax.startswith("SELECT"):
         # LLM help line below
-        #raise ValueError("Invalid input")
+        raise ValueError("Invalid input")
 
     # Reject queries referencing unknown tables
 
 
     # Reject queries referencing unknown columns
-
 
     return True
 

@@ -1,11 +1,17 @@
 from query_service_logic import get_all_schema_strings
 from llm_interface_logic import ask_LLM
+from db_modifier import query_only_db
 
-print(get_all_schema_strings('sample_db.db'))
+
+test_sql_query_1 = 'SELECT product_name, price FROM products ORDER BY price DESC LIMIT 1;'
+result = query_only_db(test_sql_query_1, "sample_db.db")
+print(result)
+
+
+
 
 # specifically tests ask_LLM(natural syntax, all schemas)
 def test_LLM_translation(user_query_natural_syntax):
-
 
     # call schema manager: schema manager will provide schema context to the LLM
     placeholder_path = 'sample_db.db'

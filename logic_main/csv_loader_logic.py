@@ -16,7 +16,7 @@ def upload_data(table_path):
 
     # Step 2: call schema manager. SM will make a new schema record for this uploaded data.
     # Will compare to directory of schemas and return command to add to existing table or create new table
-    create_table_str = create_schema_record(df)
+    create_table_str = create_schema_record(df, table_path)
 
     placeholder_path = 'sample_db.db'
     modify_sql_db(create_table_str, placeholder_path)

@@ -7,9 +7,8 @@ def ask_LLM(user_natural_text_query: str, database_schema: list[str]):
     client = OpenAI()
     response = client.responses.create(
         model="gpt-5.4",
-        input=f"Translate the following query into SQLite syntax: {user_natural_text_query}. For context"
-              f"the following is the relevant schema for the related database. {database_schema}. Also, the query"
-              f"will be passed through the command cur.execute(modify_db_sql_command) and therefore should not have"
-              f"any additional formatting."
+        input=f"Convert this query into SQL syntax: {user_natural_text_query}. You may ONLY use fields"
+              f"or columns listed in the database schema: {database_schema}. Do not include any additional formatting."
+              f"The query will be passed into cur.execute(modify_db_sql_command)."
     )
     return response.output_text
