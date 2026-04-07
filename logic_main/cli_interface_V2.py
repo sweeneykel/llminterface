@@ -7,23 +7,23 @@ def main():
 
     while running:
         print("\nChoose an option:")
-        print("1. Create new db")
-        print("2. Upload new csv file")
-        print("3. Query db")
-        print("4. Exit")
+        print("1. Create a new table with entries in a new or existing database")
+        print("2. Query db")
+        print("3. Exit")
 
         user_choice = input("Enter your choice: ").strip()
 
         if user_choice == "1":
-            user_input = input("What is the name of the db you would like to create?: ").strip()
-            upload_data(user_input)
+            db_name = input("Name of DB: ").strip()
+            # TODO: future feature could include supporting handling of csv file: headers, NaN, blank rows, etc.
+            file_path = input("File path to csv file: ").strip()
+            print(upload_data(file_path, db_name))
             pass
         elif user_choice == "2":
-            user_input = input("What is the name of the csv file you want to add?").strip()
-
-            # add logic for option two
+            user_query = input("Type query here: ").strip()
+            # upload_data(user_query)
             pass
-        elif user_choice == "3":
+        elif user_choice == "4":
             print("Exiting program.")
             running = False
         else:

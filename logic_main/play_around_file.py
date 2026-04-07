@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_csv('example_table.csv')
+df = pd.read_csv('../test/example_table.csv')
 
 col_list = ['id', 'INTEGER PRIMARY KEY AUTOINCREMENT,']
 

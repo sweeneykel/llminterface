@@ -10,7 +10,7 @@ print(result)
 
 
 
-# specifically tests ask_LLM(natural syntax, all schemas)
+# specifically test ask_LLM(natural syntax, all schemas)
 def test_LLM_translation(user_query_natural_syntax):
 
     # call schema manager: schema manager will provide schema context to the LLM

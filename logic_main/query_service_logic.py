@@ -5,7 +5,7 @@ from db_modifier import query_only_db
 
 def get_query(user_query_natural_syntax):
     # call schema manager: schema manager will provide schema context to the LLM
-    placeholder_path = 'sample_db.db'
+    placeholder_path = '../test/sample_db.db'
     schema_context = get_all_schema_strings(placeholder_path)
 
     # call LLM Interface: LLM Interface will provide a translation from natural structured language
