@@ -2,7 +2,7 @@
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from logic_main.csv_loader_logic import upload_data
+from src.csv_loader import upload_data
 
 app = FastAPI()
 

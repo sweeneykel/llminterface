@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from logic_main.schema_manager_logic import append_or_create, find_schema_context
+from src.schema_manager import append_or_create, find_schema_context
 
 app = FastAPI()
 

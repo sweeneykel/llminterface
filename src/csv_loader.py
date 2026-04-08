@@ -1,7 +1,5 @@
-from xml.etree.ElementTree import tostring
-
 import pandas as pd
-from schema_manager_logic import create_schema_record
+from schema_manager import create_schema_record
 from db_modifier import modify_sql_add_table
 
 def upload_data(table_path: str, db_name: str):

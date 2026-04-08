@@ -45,7 +45,7 @@ def get_all_schema_strings(db_path: str) -> list[str]:
             AND sql IS NOT NULL
         """)
         results = cursor.fetchall()
-        print("schema_manager_logic.py get_all_schema_strings()", results)
+        print("schema_manager.py get_all_schema_strings()", results)
         return [row[0] for row in results]
     finally:
         conn.close()

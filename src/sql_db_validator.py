@@ -1,4 +1,4 @@
-from schema_manager_logic import get_all_schema_strings
+from schema_manager import get_all_schema_strings
 
 
 #placeholder_path = 'sample_db.db'

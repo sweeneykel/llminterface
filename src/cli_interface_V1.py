@@ -1,10 +1,10 @@
 import argparse
-from csv_loader_logic import upload_data
-from query_service_logic import get_query
+from csv_loader import upload_data
+from query_service import get_query
 
 # LLM Usage: Used chatgpt to clarify argparse concepts and consider different options for user input.
 
-# this module will only be able to call: csv_loader_logic.py (to upload new data) or query_service_logic.py (submit a query)
+# this module will only be able to call: csv_loader.py (to upload new data) or query_service.py (submit a query)
 
 # Make parser
 parser = argparse.ArgumentParser(
