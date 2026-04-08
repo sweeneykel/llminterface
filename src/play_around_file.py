@@ -1,12 +1,10 @@
 import pandas as pd
 
-goal = "SELECT name FROM sqlite_master WHERE name='spam'"
+df = pd.read_csv('customers.csv')
 
-table_name = "'spam'"
-confirm_modify_db = f"SELECT name FROM sqlite_master WHERE name={table_name}"
+placeholders = f"({', '.join('?' for _ in df.columns)})"
+print(placeholders)
 
-print(goal)
-print(confirm_modify_db)
+print(df)
 
-if goal == confirm_modify_db:
-    print('yes')
+print(df.loc[1:])

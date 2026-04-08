@@ -18,6 +18,6 @@ def upload_data(table_path: str, db_name: str):
     create_table_str = create_schema_record(df, table_name)
 
     # Step 3:
-    modify_sql_add_table(create_table_str, db_name, table_name)
+    modify_sql_add_table(create_table_str, df, db_name, table_name)
 
 

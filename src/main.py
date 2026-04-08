@@ -23,7 +23,7 @@ def main():
             user_query = input("Type query here: ").strip()
             # upload_data(user_query)
             pass
-        elif user_choice == "4":
+        elif user_choice == "3":
             print("Exiting program.")
             running = False
         else:
