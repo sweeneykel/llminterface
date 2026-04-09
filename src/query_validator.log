@@ -1,0 +1,5 @@
+2026-04-08 21:12:55,267 - INFO - HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2026-04-08 21:12:55,342 - ERROR - Rejected
+2026-04-08 21:15:03,195 - ERROR - contains ; - select max(total_amount) as max_amount_spent
+from orders;
+2026-04-08 21:27:18,269 - INFO - HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"

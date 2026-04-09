@@ -1,10 +1,7 @@
-import pandas as pd
+from schema_manager import get_list_table_names, add_col_names
 
-df = pd.read_csv('customers.csv')
 
-placeholders = f"({', '.join('?' for _ in df.columns)})"
-print(placeholders)
-
-print(df)
-
-print(df.loc[1:])
+db_dictionary = get_list_table_names('tq')
+print(db_dictionary)
+add_col_names('tq', db_dictionary)
+print(db_dictionary)

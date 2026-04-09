@@ -25,9 +25,6 @@ def test_answer():
     assert func(3) == 5
     '''
 
-# TODO: would like to learn about how to write better tests
-# https://docs.pytest.org/en/stable/how-to/unittest.html#unittest
-
 
 def test_SQL_output():
     df = pd.read_csv('customers.csv')

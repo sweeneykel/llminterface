@@ -3,12 +3,12 @@
 
 from openai import OpenAI
 
-def ask_LLM(user_natural_text_query: str, database_schema: list[str]):
+def ask_llm(user_natural_text_query: str, database_schema: dict):
     client = OpenAI()
     response = client.responses.create(
         model="gpt-5.4",
-        input=f"Convert this query into SQL syntax: {user_natural_text_query}. You may ONLY use fields"
-              f"or columns listed in the database schema: {database_schema}. Do not include any additional formatting."
-              f"The query will be passed into cur.execute(modify_db_sql_command)."
+        input=f"Convert this query into SQL syntax: {user_natural_text_query}. This is the database schema:"
+              f"Keys are table names and values are a list of column names {database_schema}. "
+              f"Do not include any additional formatting.The query will be passed as an argument cur.execute()."
     )
     return response.output_text
