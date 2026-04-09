@@ -2,6 +2,7 @@
 import sqlite3
 import pandas as pd
 import os
+from human_itl import human_itl_confirms
 
 def query_only_db(query_db_sql_command: str, db_name: str):
     abs_path = os.path.abspath(db_name)
@@ -19,16 +20,25 @@ def query_only_db(query_db_sql_command: str, db_name: str):
     conn.close()
     return db_response
 
+def query_sql_db(db_name: str, db_command: str):
+    # opens a connection between sqlite3 and the db
+    conn = sqlite3.connect(f"file:{db_name}?mode=ro", uri=True)
+    # conn represents a connection to db
+    # cur executes SQL statements and fetches results
+    cur = conn.cursor()
+    # execute actually sends the command
+    cur.execute(db_command)
+    results = cur.fetchall()
+    conn.close()
+    return results
+
+
 def modify_sql_add_table(modify_db_sql_command: str, df: pd.DataFrame,  db_name: str, table_name: str):
     # will create this db if it does not exist
     conn = sqlite3.connect(db_name)
     cur = conn.cursor()
     # TODO incorporate Human in the loop here
-    print("This is the SQL command that will be used to create a new table: ", modify_db_sql_command)
-    user_choice = input("Do you want to proceed with this command? Type CONFIRM"
-                        " to proceed. Type any other letter to cancel this process:   ").strip()
-    if user_choice == "CONFIRM":
-        print("creating table ", table_name)
+    if human_itl_confirms("Do you want to execute this change to the database?", modify_db_sql_command):
         cur.execute(modify_db_sql_command)
         res = cur.execute(f"SELECT name FROM sqlite_master WHERE name='{table_name}'")
         did_it_work = res.fetchone()
@@ -51,3 +61,10 @@ def modify_sql_add_table(modify_db_sql_command: str, df: pd.DataFrame,  db_name:
                 print(row)
 
     conn.close()
+
+
+def modify_sql_db():
+    return 0
+
+
+
