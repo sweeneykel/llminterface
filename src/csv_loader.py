@@ -20,3 +20,5 @@ def upload_data(table_path: str, db_name: str):
     if human_itl_confirms("Do you want to execute this change to the database?", create_table_str):
         modify_sql_db_table(create_table_str, df, db_name, table_name)
 
+    # LLM suggestion
+    return {"status": "success", "table": table_name}
