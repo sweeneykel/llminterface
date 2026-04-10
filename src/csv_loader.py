@@ -1,6 +1,7 @@
 import pandas as pd
 from schema_manager import create_schema_record
-from db_modifier import modify_sql_add_table
+from db_modifier import modify_sql_db_table
+from human_itl import human_itl_confirms
 
 def upload_data(table_path: str, db_name: str):
     # Step 1: Convert csv file into a df
@@ -17,6 +18,6 @@ def upload_data(table_path: str, db_name: str):
     create_table_str = create_schema_record(df, table_name)
 
     # Step 3:
-    modify_sql_add_table(create_table_str, df, db_name, table_name)
-
+    if human_itl_confirms("Do you want to execute this change to the database?", create_table_str):
+        modify_sql_db_table(create_table_str, df, db_name, table_name)
 
