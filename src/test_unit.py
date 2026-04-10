@@ -3,6 +3,10 @@ import pandas as pd
 from csv_loader import upload_data
 from schema_manager import create_schema_record, get_list_table_names, add_col_names
 from human_itl import human_itl_confirms
+from query_service import get_list_table_names, add_col_names
+from llm_interface import ask_llm
+from db_modifier import query_only_db
+
 
 # test csv_loader
 def test_read_csv():
@@ -40,7 +44,18 @@ def test_create_schema_record():
 def test_get_list_table_names():
     assert get_list_table_names('tq') == {"customers":[], "order_items":[], "orders":[], "products":[]}
 
+schema_test_db = {"customers":['customer_id', 'name', 'email', 'city', 'signup_date'], "order_items":['order_item_id', 'order_id', 'product_id', 'quantity', 'unit_price'], "orders":['order_id', 'customer_id', 'order_date', 'status', 'total_amount'], "products":['product_id', 'product_name', 'category', 'price', 'stock_quantity']}
+
 def test_add_col_names():
     df = {"customers":[], "order_items":[], "orders":[], "products":[]}
-    assert add_col_names('tq', df) == {"customers":['customer_id', 'name', 'email', 'city', 'signup_date'], "order_items":['order_item_id', 'order_id', 'product_id', 'quantity', 'unit_price'], "orders":['order_id', 'customer_id', 'order_date', 'status', 'total_amount'], "products":['product_id', 'product_name', 'category', 'price', 'stock_quantity']}
+    assert add_col_names('tq', df) == schema_test_db
+
+tuq1 = "What is the average cost of a product that is available for sale?"
+tuq2 = "How many orders are still being processed?"
+tuq3 = "How many orders are completed?"
+tuq4 = "What is the most expensive item available for sale?"
+
+def test_LLM_translation():
+    assert ask_llm(tuq1, schema_test_db) == 'SELECT AVG(price) FROM products WHERE stock_quantity > 0;'
+    assert ask_llm(tuq2, schema_test_db) == 'SELECT * FROM orders WHERE status == processing;'
 
